@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_package_bundle_form" model="ir.ui.view">
+        <field name="name">sale.package.bundle.form</field>
+        <field name="model">package.bundle</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="sequence_no" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="sale_order_reference"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="expected_date"/>
+                            <field name="partner_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Package Details" name="package_details">
+                            <field name="line_ids">
+                                <tree>
+                                    <field name="product_id" string="Product"/>
+                                    <field name="quantity" string="Quantity"/>
+                                    <field name="name" string="Name"/>
+                                    <field name="width" string="Width"/>
+                                    <field name="height" string="Height"/>
+                                    <field name="length" string="Length"/>
+                                    <field name="maximum_weight"
+                                           string="Maximum_weight"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_package_bundle_tree" model="ir.ui.view">
+        <field name="name">package.bundle.tree</field>
+        <field name="model">package.bundle</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence_no"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_package_bundle" model="ir.actions.act_window">
+        <field name="name">Package Bundle</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">package.bundle</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your First Package Bundle!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_package_bundle_root"
+              name="Package Bundle"
+              sequence="10"/>
+
+    <menuitem id="menu_package_bundle"
+              name="Package Bundle"
+              action="action_package_bundle"
+              sequence="10"/>
+
+    <menuitem id="menu_package_bundle"
+              name="Package Bundles"
+              parent="stock.menu_stock_root"
+              action="action_package_bundle"
+              sequence="10"/>
+
+</odoo>

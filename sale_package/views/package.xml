@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_package_form" model="ir.ui.view">
+        <field name="name">sale.package.form</field>
+        <field name="model">sale.package</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="width"/>
+                            <field name="height"/>
+                        </group>
+                        <group>
+                            <field name="length"/>
+                            <field name="maximum_weight"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_package_tree" model="ir.ui.view">
+        <field name="name">sale.package.tree</field>
+        <field name="model">sale.package</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="width"/>
+                <field name="height"/>
+                <field name="length"/>
+                <field name="maximum_weight"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_package" model="ir.actions.act_window">
+        <field name="name">Package</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.package</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your First Package!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_package_root"
+              name="Sale Package"
+              sequence="10"/>
+
+    <menuitem id="menu_sale_package_root"
+              name="Package"
+              parent="menu_package_root"
+              sequence="10"/>
+
+    <menuitem id="menu_package"
+              name="Package"
+              parent="menu_sale_package_root"
+              action="action_package"
+              sequence="10"/>
+
+    <menuitem id="menu_pack"
+              name="Sales Package"
+              parent="stock.menu_stock_config_settings"
+              action="action_package"/>
+
+</odoo>
